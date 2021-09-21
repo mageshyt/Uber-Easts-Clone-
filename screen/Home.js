@@ -5,7 +5,7 @@ import Searchbar from "../components/Searchbar";
 
 export default function Home() {
   return (
-    <SafeAreaView style={{ backgroundColor: "#eee", flex: 1 }}>
+    <SafeAreaView style={{ backgroundColor: "#121212", flex: 1 }}>
       <View style={{ backgroundColor: "white", padding: 16 }}>
         <HeaderTab />
         <Searchbar />
