@@ -2,54 +2,45 @@ import React, { useState } from "react";
 
 import { View, Text, TouchableOpacity } from "react-native";
 
-export default function HeaderTab() {
-  const [activeButton, setActiveButton] = useState("Delivery");
+export default function HeaderTab(props) {
+  // console.log("data -->", activeTab);
   return (
     <View
       style={{
         flexDirection: "row",
         alignSelf: "center",
         padding: 4,
+        marginTop: 5,
       }}
     >
       {/*Header Buttons -1  */}
       <HeaderButton
         text="Delivery"
-        bgcolor="black"
-        textColor="white"
-        activeButton={activeButton}
-        setActiveButton={setActiveButton}
+        activeTab={props.activeTab}
+        setActiveTab={props.setActiveTab}
       />
       <HeaderButton
-        text="pickups"
-        bgcolor="white"
-        textColor="black"
-        activeButton={activeButton}
-        setActiveButton={setActiveButton}
+        text="Pickup"
+        activeTab={props.activeTab}
+        setActiveTab={props.setActiveTab}
       />
     </View>
   );
 }
 
-const HeaderButton = ({
-  text,
-  bgcolor,
-  textColor,
-  activeButton,
-  setActiveButton,
-}) => (
+const HeaderButton = ({ text, activeTab, setActiveTab }) => (
   <TouchableOpacity
     style={{
-      backgroundColor: activeButton === text ? "black" : "white",
+      backgroundColor: activeTab === text ? "black" : "white",
       paddingVertical: 6,
       paddingHorizontal: 15,
       borderRadius: 20,
     }}
-    onPress={() => setActiveButton(text)}
+    onPress={() => setActiveTab(text)}
   >
     <Text
       style={{
-        color: activeButton === text ? "white" : "black",
+        color: activeTab === text ? "white" : "black",
         fontSize: 16,
         fontWeight: "700",
       }}
