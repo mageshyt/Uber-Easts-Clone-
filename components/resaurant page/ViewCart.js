@@ -8,7 +8,7 @@ const ViewCart = ({ navigation, restaurantName }) => {
         zIndex: 999,
         flex: 1,
         position: "absolute",
-        bottom: 120,
+        bottom: 100,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",

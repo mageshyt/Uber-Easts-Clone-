@@ -70,6 +70,8 @@ const RestaurantImage = ({ image, navigation, restaurant }) => {
     <>
       <TouchableOpacity
         activeOpacity={0.8}
+        // ! when we press the image it will navigate to about page
+
         onPress={() =>
           navigation.navigate("RestaurantDetail", {
             name: restaurant.name,
@@ -89,6 +91,7 @@ const RestaurantImage = ({ image, navigation, restaurant }) => {
           }}
         />
       </TouchableOpacity>
+      {/* Heart Icon  */}
       <TouchableOpacity style={{ position: "absolute", right: 15, top: 20 }}>
         <MaterialCommunityIcons
           onPress={() => {
