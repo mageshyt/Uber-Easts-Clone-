@@ -2,29 +2,31 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import React, { useState } from "react";
 
-const RestaurantItems = ({ restaurantData }) => {
-  const clickLike = () => {
-    setLike(1);
-  };
+const RestaurantItems = ({ navigation, restaurantData }) => {
   return (
-    <TouchableOpacity activeOpacity={1} style={{ marginBottom: 10 }}>
+    <>
       {restaurantData.map((restaurant, index) => (
-        <View
-          key={index}
-          style={{
-            marginTop: 10,
-            backgroundColor: "white",
-            padding: 10,
-            borderRadius: 5,
-          }}
-        >
-          {/* Image of the restaurant */}
-          <RestaurantImage image={restaurant.image_url} />
-          {/* restaurant Info */}
-          <RestaurantInfo name={restaurant.name} rating={restaurant.rating} />
+        <View key={index} style={{ marginBottom: 10 }}>
+          <View
+            style={{
+              marginTop: 10,
+              backgroundColor: "white",
+              padding: 10,
+              borderRadius: 5,
+            }}
+          >
+            {/* Image of the restaurant */}
+            <RestaurantImage
+              navigation={navigation}
+              image={restaurant.image_url}
+              restaurant={restaurant}
+            />
+            {/* restaurant Info */}
+            <RestaurantInfo name={restaurant.name} rating={restaurant.rating} />
+          </View>
         </View>
       ))}
-    </TouchableOpacity>
+    </>
   );
 };
 // ! for info
@@ -61,12 +63,24 @@ const RestaurantInfo = ({ name, rating }) => (
 
 // ! for image
 
-const RestaurantImage = ({ image }) => {
+const RestaurantImage = ({ image, navigation, restaurant }) => {
   const [like, setLike] = useState(true);
-  let count = 0;
+
   return (
     <>
-      <TouchableOpacity activeOpacity={0.8}>
+      <TouchableOpacity
+        activeOpacity={0.8}
+        onPress={() =>
+          navigation.navigate("RestaurantDetail", {
+            name: restaurant.name,
+            image: restaurant.image_url,
+            price: restaurant.price,
+            rating: restaurant.rating,
+            categories: restaurant.categories,
+            reviews: restaurant.review_count,
+          })
+        }
+      >
         <Image
           source={{ uri: image }}
           style={{
@@ -78,11 +92,7 @@ const RestaurantImage = ({ image }) => {
       <TouchableOpacity style={{ position: "absolute", right: 15, top: 20 }}>
         <MaterialCommunityIcons
           onPress={() => {
-            count++;
-            if (count == 1) {
-              setLike(!like);
-            }
-            count = 0;
+            setLike(!like);
           }}
           name={like ? "heart-outline" : "heart"}
           size={25}

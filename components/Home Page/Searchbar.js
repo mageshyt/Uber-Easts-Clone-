@@ -13,7 +13,6 @@ export default function Searchbar({ cityState }) {
           console.log(data.description);
           const city = data.description.split(",")[0];
           cityState(city);
-          console.log("city-->", city);
         }}
         placeholder="Search"
         styles={{
