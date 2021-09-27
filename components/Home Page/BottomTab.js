@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import { Icon } from "react-native-elements";
-import FontAwesome5 from "react-native-vector-icons/FontAwesome";
+
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 export default function BottomTab() {
   return (
     <View
@@ -16,7 +16,7 @@ export default function BottomTab() {
       <Icons icon="home" text="house" />
       <Icons icon="search" text="Browse" />
       <Icons icon="shopping-bag" text="Cart" />
-      <Icons icon="first-order" text="Orders" />
+      <Icons icon="receipt" text="Orders" />
       <Icons icon="user" text="user" />
     </View>
   );
